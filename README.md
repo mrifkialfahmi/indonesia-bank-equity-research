@@ -1,37 +1,37 @@
-# indonesia-bank-equity-research
-Comparative equity research analysis of Indonesia's largest banks (BBCA, BMRI, BBRI, and BBNI) using financial statements, macroeconomic indicators, and valuation metrics.
 # Indonesia Big 4 Banks Comparative Equity Research
 
-## Overview
-
-This research compares Indonesia's four largest banks:
+A comparative equity research analysis of Indonesia's largest banks:
 
 - BBCA (Bank Central Asia)
 - BMRI (Bank Mandiri)
 - BBRI (Bank Rakyat Indonesia)
 - BBNI (Bank Negara Indonesia)
 
-The objective is to determine which bank currently offers the strongest investment opportunity based on:
+This research evaluates each bank based on:
 
 - Profitability
-- Asset quality
-- Risk profile
-- Growth potential
+- Asset Quality
+- Risk Profile
+- Growth Potential
 - Valuation
 
----
+## Live Dashboard
 
-## Research Framework
+View the interactive dashboard here:
 
-The analysis includes:
+🔗 https://yourusername.github.io/big4-bank-analysis/
 
-### 1. Macroeconomic Analysis
+## Research Scope
+
+The analysis covers:
+
+### Macroeconomic Factors
 - BI Rate
 - Inflation
 - GDP Growth
-- Credit Growth
+- Banking Industry Outlook
 
-### 2. Financial Performance
+### Financial Metrics
 - ROE
 - ROA
 - NIM
@@ -39,27 +39,20 @@ The analysis includes:
 - CASA Ratio
 - Loan Growth
 
-### 3. Valuation Analysis
+### Valuation
 - PBV
 - PER
 - Dividend Yield
 
-### 4. Investment Recommendation
-
-Final recommendation based on risk-adjusted return and long-term outlook.
-
----
-
 ## Files
 
-📄 Research Report  
-📊 Financial Data (Excel)  
-📈 Supporting Charts
-
----
+📄 Research Report (PDF)  
+📊 Financial Dataset (JSON / Excel)  
+📈 Interactive Dashboard (HTML)
 
 ## Author
 
-Miftakhul Rifki Al Fahmi  
-Development Economics Graduate Student  
-Interested in Financial Markets, Investment Research, and Digital Assets
+Miftakhul Rifki Al Fahmi
+
+Development Economics Student  
+Financial Markets | Investment Research | Digital Assets
