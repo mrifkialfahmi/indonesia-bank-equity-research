@@ -1,0 +1,147 @@
+{
+  "_meta": {
+    "reportDate": "2026-05-26",
+    "subject": "Indonesia Big-4 Banks Comparative Analysis",
+    "tickers": ["BBCA.JK", "BMRI.JK", "BBRI.JK", "BBNI.JK"],
+    "dataPeriod": "1Q 2026 (Jan-Mar 2026), released 23-30 April 2026",
+    "fiveYearWindow": "FY2020-FY2025",
+    "sources": [
+      "BBCA 1Q26 corporate presentation (23 Apr 2026) — bca.co.id",
+      "BMRI 1Q26 Analyst Meeting Long Form (28 Apr 2026) — bankmandiri.co.id",
+      "BRI 1Q26 earnings release (30 Apr 2026)",
+      "BNI 1Q26 corporate presentation (Apr 2026) — bni.co.id",
+      "OJK Statistik Perbankan Indonesia (latest issue)",
+      "Bank Indonesia: BI-Rate decision May 2026 (bi.go.id/sp_284326)",
+      "Bank Indonesia: April 2026 CPI release (bi.go.id)",
+      "BPS: Q1 2026 GDP release dated 5 May 2026",
+      "stockanalysis.com /statistics/ pages for each ticker (deeper structural fundamentals)",
+      "Google Finance per-ticker live quote (May 2026)"
+    ]
+  },
+  "macro": {
+    "biRate": {"value": 0.0525, "asOf": "2026-05-20", "context": "Hiked +50bp to defend rupiah amid global volatility", "source": "Bank Indonesia"},
+    "biRateRangeYTD": {"low": 0.0475, "high": 0.0525, "note": "Held at 4.75% earlier 2026; hiked May"},
+    "gdpGrowthQ1_2026": {"value": 0.0561, "asOf": "2026-05-05", "context": "Strongest since 2021; beat 5.3% consensus", "source": "BPS"},
+    "cpiApril2026": {"value": 0.0242, "context": "Within BI target 2.5%±1%", "source": "BI"},
+    "systemLoanGrowth": {"value": 0.0996, "asOf": "2026-01", "source": "BI"},
+    "systemNplGross": {"value": 0.0228, "asOf": "2026Q1", "source": "OJK"},
+    "creditGrowthTarget2026": {"low": 0.08, "high": 0.12, "source": "Bank Indonesia"}
+  },
+  "banks": {
+    "BBCA.JK": {
+      "name": "Bank Central Asia",
+      "currentPrice_IDR": 6025, "marketCap_T_IDR": 738.36,
+      "Q1_2026": {
+        "netProfit_T_IDR": 14.7, "netProfitYoY": 0.038,
+        "totalAssets_T_IDR": 1640.8,
+        "nim": 0.054, "nimYoYDelta_bp": -40,
+        "nplGross": 0.018, "nplCoverage": 1.746,
+        "car": 0.2695,
+        "casa": 0.852, "casaYoY": 0.112,
+        "ldr": 0.74,
+        "cir": 0.273,
+        "loanGrowthYoY": 0.056, "depositGrowthYoY": 0.083
+      },
+      "FY2025": {"netProfit_T_IDR_estimate": 57.77, "roeEstimate": 0.241, "nim_1H25": 0.058, "source": "1H25 actuals + consensus forecast"},
+      "FY2024": {"netProfit_T_IDR": 50.47, "profitYoY": 0.14, "nim_11M": 0.0574, "source": "11M24 disclosure (CNBC Jan 2025)"},
+      "Valuation": {"pe": 12.83, "pb": 3.00, "divYield": 0.0555, "payoutRatio": 0.6534, "source": "Google Finance / stockanalysis.com"},
+      "Business": {
+        "segments": "Retail banking dominant; SME, corporate, treasury; subsidiaries in syariah, finance, insurance",
+        "moat": "Lowest cost-of-funds franchise in Indonesia (85% CASA); 27M+ customers; market-leading digital platform (myBCA, BCA Mobile)",
+        "marketShare": "Largest private bank; #3 by assets after BMRI and BBRI"
+      },
+      "rating": "HOLD", "rationale": "Quality compounder with fortress capital (26.95% CAR) and unmatched CASA franchise. But 3.0× P/B already prices in 24% ROE; NIM compression (-40bp YoY) signals competitive yield pressure. Hold for defensive book exposure."
+    },
+    "BMRI.JK": {
+      "name": "Bank Mandiri",
+      "currentPrice_IDR": 4490, "marketCap_T_IDR": 414.88,
+      "Q1_2026": {
+        "netProfit_T_IDR": 15.4, "netProfitYoY": 0.166,
+        "nim": 0.047, "nimGuidance2026": [0.045, 0.047],
+        "nplGross": 0.0098, "nplNet": 0.0041,
+        "car": 0.197,
+        "casa": 0.716,
+        "loanGrowthFY25": 0.134,
+        "depositGrowthFY25": 0.239,
+        "note": "Q1 2026 reflects BRIS deconsolidation"
+      },
+      "FY2025": {"netProfit_T_IDR": 56.30, "profitYoY": 0.009, "nim": 0.049, "nimYoYDelta_bp": -26, "loanGrowth": 0.134, "depositGrowth": 0.239},
+      "Valuation": {"pe": 7.16, "pb": 1.37, "divYield": 0.0967, "payoutRatio": 0.7729, "source": "Google Finance / stockanalysis.com"},
+      "Business": {
+        "segments": "Largest by assets; balanced corporate, retail, SME, syariah; conglomerate value chain",
+        "moat": "State-owned utility-like position with massive scale; deep SOE/corporate relationships; large CASA base 71.6%",
+        "marketShare": "Largest bank by assets in Indonesia"
+      },
+      "rating": "BUY", "rationale": "Best Q1 momentum (+16.6% profit), lowest NPL among peers (0.98%), trading at 7.2× P/E and 1.37× P/B for 19% ROE. 9.67% yield with sustainable 77% payout. Top pick for value + quality balance."
+    },
+    "BBRI.JK": {
+      "name": "Bank Rakyat Indonesia",
+      "currentPrice_IDR": 3070, "marketCap_T_IDR": 460.63,
+      "Q1_2026": {
+        "netProfit_T_IDR": 15.6, "netProfitYoY": 0.138,
+        "revenue_T_IDR": 52.84,
+        "nim": 0.079, "nimGuidance2026": [0.074, 0.078],
+        "nimYoYDelta_bp": 20,
+        "lar": 0.048, "larPriorYr": 0.0657,
+        "costOfCredit": 0.032, "cocGuidance2026": [0.029, 0.032],
+        "cirGuidance2026": [0.41, 0.43],
+        "loanGrowthYoY": 0.137, "totalAssetGrowthYoY": 0.072,
+        "note": "Highest NIM in coverage; cost-of-credit improvement key thesis driver"
+      },
+      "FY2024": {"netProfit_T_IDR": 60.64, "profitYoY": 0.0036, "source": "FY24 release Jan 2025"},
+      "Valuation": {"pe": 8.16, "pb": 1.68, "divYield": 0.1127, "payoutRatio": 0.9158, "source": "Google Finance / stockanalysis.com"},
+      "Business": {
+        "segments": "Microfinance leader (Ultra Micro Holding with PNM, Pegadaian); SME, retail, corporate; 90,000+ touchpoints",
+        "moat": "Unmatched rural and ultra-micro distribution; 30M+ micro/SME borrowers; highest NIM in system at 7.9%",
+        "marketShare": "Largest by customer base; #2 by assets"
+      },
+      "rating": "BUY", "rationale": "Highest yield (11.3%) backed by record microfinance NIM (7.9%) and improving LAR (4.8% vs 6.6% PY). 91% payout is high but covered by stable 18% ROE. Asset quality recovery is the key catalyst."
+    },
+    "BBNI.JK": {
+      "name": "Bank Negara Indonesia",
+      "currentPrice_IDR": 3810, "marketCap_T_IDR": 140.68,
+      "Q1_2026": {
+        "netProfit_T_IDR": 5.66, "netProfitYoY": 0.052,
+        "nim": 0.038, "nimGuidanceRevised": [0.035, 0.038], "nimYoYDelta_bp": -30,
+        "nplGross": 0.019,
+        "casaYoY": 0.266, "casaBalance_T_IDR": 731.6,
+        "lar": 0.086,
+        "costOfCredit": 0.011,
+        "loanGrowthYoY": 0.201, "loanBalance_T_IDR": 919.3,
+        "at1Issuance": "USD 700M in April 2026 to strengthen capital"
+      },
+      "FY2025": {"nim_FY25_guidance": 0.037, "nim_actual_9M25": 0.036, "loanGrowth_FY25": 0.105, "casaRatio_3Q25": 0.656},
+      "Valuation": {"pe": 7.09, "pb": 0.88, "divYield": 0.0957, "payoutRatio": 0.6865, "source": "Google Finance / stockanalysis.com"},
+      "Business": {
+        "segments": "Corporate banking heavy (BNI Direct); growing digital retail (Wondr by BNI, 5.4M users at YE25)",
+        "moat": "International network (NY, London, Tokyo, etc.) supporting cross-border corporate; recent digital pivot via Wondr/BNIdirect",
+        "marketShare": "#4 by assets among Big-4"
+      },
+      "rating": "HOLD", "rationale": "Trading below book (P/B 0.88×) reflecting weakest profitability profile: 12% ROE vs peers 17-24%, NIM compressing to 3.5-3.8%, aggressive 20% loan growth raising credit-cost question. Cheap but for reason. Wait for Wondr-driven CASA mix improvement to validate the digital transformation thesis."
+    }
+  },
+  "fiveYearMetrics": {
+    "_note": "Selected key metrics across cycle. Sourced from each bank's annual reports (BBCA, BMRI, BBRI, BBNI) via Samuel Sekuritas, Bahana, MNC Securities sell-side reports and IR investor presentations.",
+    "ROE": {
+      "BBCA": [0.166, 0.181, 0.214, 0.236, 0.241],
+      "BMRI": [0.118, 0.147, 0.222, 0.225, 0.207],
+      "BBRI": [0.118, 0.156, 0.180, 0.193, 0.181],
+      "BBNI": [0.072, 0.099, 0.149, 0.149, 0.140],
+      "years": [2020, 2021, 2022, 2023, 2024]
+    },
+    "NIM": {
+      "BBCA": [0.057, 0.054, 0.058, 0.059, 0.057],
+      "BMRI": [0.046, 0.048, 0.050, 0.051, 0.049],
+      "BBRI": [0.063, 0.070, 0.080, 0.080, 0.077],
+      "BBNI": [0.045, 0.047, 0.048, 0.043, 0.041],
+      "years": [2020, 2021, 2022, 2023, 2024]
+    },
+    "NPL_gross": {
+      "BBCA": [0.018, 0.022, 0.018, 0.020, 0.020],
+      "BMRI": [0.031, 0.025, 0.019, 0.011, 0.011],
+      "BBRI": [0.029, 0.030, 0.027, 0.029, 0.028],
+      "BBNI": [0.044, 0.033, 0.024, 0.020, 0.020],
+      "years": [2020, 2021, 2022, 2023, 2024]
+    }
+  }
+}

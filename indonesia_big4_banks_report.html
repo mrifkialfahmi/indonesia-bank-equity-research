@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indonesia Big-4 Banks · Comparative Equity Research · May 2026</title>
+<style>
+  :root {
+    --bg: #f5f5f7; --bg-elev: #ffffff; --bg-glass: rgba(255,255,255,0.72); --bg-soft: #fbfbfd;
+    --text: #1d1d1f; --text-2: #6e6e73; --text-3: #86868b;
+    --line: rgba(0,0,0,0.08); --accent: #0071e3;
+    --buy: #00875a; --hold: #b25000; --sell: #d70015;
+    --good: #00875a; --bad: #d70015; --warn: #b25000;
+    --chip-bg: rgba(0,0,0,0.05);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.06);
+    --shadow-lg: 0 12px 32px rgba(0,0,0,0.10), 0 32px 80px rgba(0,0,0,0.08);
+    --radius-md: 18px; --radius-lg: 24px;
+    /* Bank brand accents */
+    --bbca: #0061a0; --bmri: #003d79; --bbri: #00529b; --bbni: #f7942e;
+  }
+  [data-theme="dark"] {
+    --bg: #000; --bg-elev: #1c1c1e; --bg-glass: rgba(28,28,30,0.78); --bg-soft: #161618;
+    --text: #f5f5f7; --text-2: #a1a1a6; --text-3: #6e6e73;
+    --line: rgba(255,255,255,0.10); --accent: #2997ff;
+    --buy: #30d158; --hold: #ff9f0a; --sell: #ff453a;
+    --good: #30d158; --bad: #ff453a; --warn: #ff9f0a;
+    --chip-bg: rgba(255,255,255,0.08);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.4);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.55), 0 16px 48px rgba(0,0,0,0.5);
+    --shadow-lg: 0 12px 32px rgba(0,0,0,0.65), 0 32px 80px rgba(0,0,0,0.55);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg); color: var(--text);
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.011em; line-height: 1.55;
+    transition: background-color .3s ease, color .3s ease;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .nav { position: sticky; top: 0; z-index: 100;
+    backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+    background: var(--bg-glass); border-bottom: 1px solid var(--line); }
+  .nav-inner { max-width: 1180px; margin: 0 auto; padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 17px; letter-spacing: -0.02em; }
+  .brand-dot { width: 22px; height: 22px; border-radius: 7px;
+    background: linear-gradient(135deg, #ff3b30, #ff9500 40%, #ffcc00 70%, #34c759 90%, #007aff);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+  .nav-links { display: none; gap: 18px; font-size: 13px; color: var(--text-2); }
+  @media (min-width: 880px) { .nav-links { display: flex; } }
+  .nav-links a { color: var(--text-2); }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+  .nav-right { display: flex; align-items: center; gap: 14px; font-size: 13px; color: var(--text-2); }
+  .theme-toggle { appearance: none; border: 1px solid var(--line); background: transparent;
+    color: var(--text); cursor: pointer; font-size: 13px; padding: 6px 12px; border-radius: 999px; }
+  .theme-toggle:hover { background: var(--chip-bg); }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px 120px; }
+  .hero { padding: 96px 0 32px; text-align: center; }
+  .eyebrow { text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px;
+    color: var(--accent); font-weight: 600; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(40px, 6vw, 76px); font-weight: 700; letter-spacing: -0.035em;
+    line-height: 1.05; margin: 0 0 18px; }
+  .hero p { font-size: 20px; color: var(--text-2); max-width: 740px; margin: 0 auto 24px;
+    font-weight: 400; letter-spacing: -0.005em; line-height: 1.5; }
+  .hero .meta { display:inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    font-size: 12px; color: var(--text-3); }
+  .hero .meta span { background: var(--chip-bg); padding: 4px 12px; border-radius: 999px; }
+
+  /* Rating chips */
+  .ratings {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 48px 0 32px;
+  }
+  @media (max-width: 700px) { .ratings { grid-template-columns: repeat(2, 1fr); } }
+  .rating-card {
+    background: var(--bg-elev); border-radius: var(--radius-md);
+    padding: 22px 22px 20px; box-shadow: var(--shadow-sm); border: 1px solid var(--line);
+    position: relative; overflow: hidden;
+  }
+  .rating-card .ticker { font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 12px; color: var(--text-3); }
+  .rating-card .name { font-size: 16px; font-weight: 600; letter-spacing: -0.015em; margin: 3px 0 14px; }
+  .rating-card .badge {
+    display: inline-block; padding: 4px 12px; border-radius: 999px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  }
+  .badge.buy { background: rgba(0,135,90,0.12); color: var(--buy); }
+  .badge.hold { background: rgba(178,80,0,0.12); color: var(--hold); }
+  .badge.sell { background: rgba(215,0,21,0.12); color: var(--sell); }
+  [data-theme="dark"] .badge.buy { background: rgba(48,209,88,0.18); }
+  [data-theme="dark"] .badge.hold { background: rgba(255,159,10,0.18); }
+  [data-theme="dark"] .badge.sell { background: rgba(255,69,58,0.18); }
+  .rating-card .price-block {
+    margin-top: 14px; display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .rating-card .price { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .rating-card .quick {
+    margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+  }
+  .rating-card .quick .k { font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-3); }
+  .rating-card .quick .v { font-size: 14px; font-weight: 500; font-variant-numeric: tabular-nums; margin-top: 1px; }
+
+  /* Section structure */
+  section.block { margin: 80px 0 0; }
+  .section-num {
+    display: inline-block; color: var(--accent);
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 8px;
+  }
+  h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 600; letter-spacing: -0.025em;
+    margin: 0 0 12px; line-height: 1.15; }
+  h3 { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; margin: 28px 0 12px; }
+  h4 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+  .lead { color: var(--text-2); font-size: 17px; line-height: 1.6; max-width: 760px; }
+  p { color: var(--text); font-size: 15px; line-height: 1.7; margin: 12px 0; max-width: 800px; }
+  p.small { font-size: 14px; color: var(--text-2); }
+
+  /* Cards */
+  .card {
+    background: var(--bg-elev); border-radius: var(--radius-md);
+    border: 1px solid var(--line); padding: 28px; box-shadow: var(--shadow-sm);
+    margin-top: 18px;
+  }
+  .card-grid { display: grid; gap: 14px; }
+  .card-grid.two { grid-template-columns: repeat(2, 1fr); }
+  .card-grid.four { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 880px) {
+    .card-grid.two, .card-grid.four { grid-template-columns: 1fr; }
+  }
+
+  /* Macro KPIs */
+  .macro {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px;
+  }
+  @media (max-width: 700px) { .macro { grid-template-columns: repeat(2, 1fr); } }
+  .macro-kpi { background: var(--bg-elev); border: 1px solid var(--line);
+    border-radius: var(--radius-md); padding: 18px; box-shadow: var(--shadow-sm); }
+  .macro-kpi .l { font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-3); }
+  .macro-kpi .v { font-size: 28px; font-weight: 600; letter-spacing: -0.025em; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .macro-kpi .s { font-size: 11px; color: var(--text-3); margin-top: 4px; }
+
+  /* Tables */
+  .table-wrap { background: var(--bg-elev); border-radius: var(--radius-lg);
+    border: 1px solid var(--line); box-shadow: var(--shadow-sm); overflow: hidden; margin-top: 18px; }
+  .scroll-x { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 600px; }
+  th, td { padding: 12px 14px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; padding-left: 20px; }
+  thead th { font-weight: 500; font-size: 11px; color: var(--text-2);
+    text-transform: uppercase; letter-spacing: 0.06em; background: var(--bg-soft); }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--chip-bg); }
+  .num { font-variant-numeric: tabular-nums; }
+  .num.good { color: var(--good); }
+  .num.bad { color: var(--bad); }
+  .num.warn { color: var(--warn); }
+  .bank-tag { display: inline-block; padding: 2px 8px; border-radius: 6px;
+    font-size: 11px; color: white; font-weight: 600; margin-right: 6px; font-family: "SF Mono", ui-monospace, Menlo, monospace; }
+  .bbca { background: #0061a0; } .bmri { background: #003d79; } .bbri { background: #00529b; } .bbni { background: #f7942e; }
+
+  /* Charts */
+  .chart-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+  @media (max-width: 880px) { .chart-grid { grid-template-columns: 1fr; } }
+  .chart-card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md);
+    padding: 20px; box-shadow: var(--shadow-sm); }
+  .chart-card h4 { margin: 0 0 4px; font-size: 14px; }
+  .chart-card .sub { font-size: 12px; color: var(--text-3); margin-bottom: 12px; }
+  .chart-card svg { width: 100%; height: auto; display: block; }
+  .legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 11px; margin-top: 8px; color: var(--text-2); }
+  .legend span::before { content: "●"; margin-right: 4px; }
+  .legend .bbca::before { color: #0061a0; }
+  .legend .bmri::before { color: #d4823e; }
+  .legend .bbri::before { color: #00529b; }
+  .legend .bbni::before { color: #f7942e; }
+
+  /* Comp matrix */
+  .matrix { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 18px; }
+  @media (max-width: 700px) { .matrix { grid-template-columns: 1fr; } }
+  .matrix-h, .matrix-c { background: var(--bg-elev); border: 1px solid var(--line);
+    border-radius: 14px; padding: 14px; box-shadow: var(--shadow-sm); }
+  .matrix-h { font-weight: 600; font-size: 13px; color: var(--text-2);
+    display: flex; align-items: center; }
+  .matrix-c { font-size: 13px; line-height: 1.45; }
+  .matrix-c .w { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+
+  /* Risk list */
+  .risk-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 18px; }
+  @media (max-width: 700px) { .risk-grid { grid-template-columns: 1fr; } }
+  .risk { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md);
+    padding: 20px; box-shadow: var(--shadow-sm); }
+  .risk .head { display: flex; gap: 10px; align-items: baseline; margin-bottom: 6px; }
+  .risk .head .lvl { font-size: 10px; padding: 2px 8px; border-radius: 999px;
+    font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  .risk .lvl.h { background: rgba(215,0,21,0.12); color: var(--bad); }
+  .risk .lvl.m { background: rgba(178,80,0,0.14); color: var(--warn); }
+  .risk .lvl.l { background: rgba(0,135,90,0.12); color: var(--good); }
+
+  /* Recommendation summary */
+  .reco { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 18px; }
+  @media (max-width: 700px) { .reco { grid-template-columns: 1fr; } }
+  .reco-card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md);
+    padding: 22px; box-shadow: var(--shadow-sm); }
+  .reco-card .cat { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--accent); font-weight: 600; margin-bottom: 8px; }
+  .reco-card .pick { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+  .reco-card .why { color: var(--text-2); font-size: 13px; margin-top: 10px; line-height: 1.5; }
+
+  /* Source list */
+  .sources { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md);
+    padding: 22px; box-shadow: var(--shadow-sm); margin-top: 18px; }
+  .sources ul { margin: 8px 0; padding-left: 18px; }
+  .sources li { font-size: 13px; line-height: 1.7; color: var(--text-2); }
+
+  .foot { margin-top: 60px; padding: 28px 0; text-align: center;
+    color: var(--text-3); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body data-theme="light">
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand"><div class="brand-dot"></div><span>Big-4 Banks · Indonesia</span></div>
+      <div class="nav-links">
+        <a href="#exec">Summary</a><a href="#industry">Industry</a>
+        <a href="#business">Business</a><a href="#financial">Financial</a>
+        <a href="#valuation">Valuation</a><a href="#position">Competition</a>
+        <a href="#risks">Risks</a><a href="#reco">Recommendation</a>
+      </div>
+      <div class="nav-right">
+        <span>26 May 2026</span>
+        <button class="theme-toggle" id="themeBtn">Dark</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="eyebrow">Comparative Equity Research · Indonesia Banks</div>
+      <h1>Four banks,<br>four investment cases.</h1>
+      <p>A sell-side comparison of BBCA, BMRI, BBRI, and BBNI through Q1 2026. We rate Bank Mandiri (BMRI) and Bank Rakyat Indonesia (BBRI) as the most attractive entries — premium ROE for sub-1.7× P/B and double-digit yields. BBCA holds its quality crown but its valuation now demands it. BBNI's sub-book trade is a value trap until profitability stabilizes.</p>
+      <div class="meta">
+        <span>1Q 2026 results · Released 23–30 Apr 2026</span>
+        <span>5Y trend · FY2020–FY2025</span>
+        <span>Sources: BI, OJK, BPS, IDX, IR</span>
+      </div>
+    </section>
+
+    <!-- RATINGS BAR -->
+    <div class="ratings">
+      <div class="rating-card">
+        <div class="ticker">BBCA.JK · Banks</div>
+        <div class="name">Bank Central Asia</div>
+        <span class="badge hold">HOLD</span>
+        <div class="price-block">
+          <div class="price">6,025 <span style="font-size:13px;color:var(--text-3);">IDR</span></div>
+          <div style="font-size:11px;color:var(--text-3);">TP 6,500 · +8%</div>
+        </div>
+        <div class="quick">
+          <div><div class="k">P/E</div><div class="v">12.8×</div></div>
+          <div><div class="k">P/B</div><div class="v">3.0×</div></div>
+          <div><div class="k">Yield</div><div class="v">5.6%</div></div>
+        </div>
+      </div>
+      <div class="rating-card">
+        <div class="ticker">BMRI.JK · Banks</div>
+        <div class="name">Bank Mandiri</div>
+        <span class="badge buy">BUY</span>
+        <div class="price-block">
+          <div class="price">4,490 <span style="font-size:13px;color:var(--text-3);">IDR</span></div>
+          <div style="font-size:11px;color:var(--text-3);">TP 5,600 · +25%</div>
+        </div>
+        <div class="quick">
+          <div><div class="k">P/E</div><div class="v">7.2×</div></div>
+          <div><div class="k">P/B</div><div class="v">1.4×</div></div>
+          <div><div class="k">Yield</div><div class="v">9.7%</div></div>
+        </div>
+      </div>
+      <div class="rating-card">
+        <div class="ticker">BBRI.JK · Banks</div>
+        <div class="name">Bank Rakyat Indonesia</div>
+        <span class="badge buy">BUY</span>
+        <div class="price-block">
+          <div class="price">3,070 <span style="font-size:13px;color:var(--text-3);">IDR</span></div>
+          <div style="font-size:11px;color:var(--text-3);">TP 3,800 · +24%</div>
+        </div>
+        <div class="quick">
+          <div><div class="k">P/E</div><div class="v">8.2×</div></div>
+          <div><div class="k">P/B</div><div class="v">1.7×</div></div>
+          <div><div class="k">Yield</div><div class="v">11.3%</div></div>
+        </div>
+      </div>
+      <div class="rating-card">
+        <div class="ticker">BBNI.JK · Banks</div>
+        <div class="name">Bank Negara Indonesia</div>
+        <span class="badge hold">HOLD</span>
+        <div class="price-block">
+          <div class="price">3,810 <span style="font-size:13px;color:var(--text-3);">IDR</span></div>
+          <div style="font-size:11px;color:var(--text-3);">TP 4,000 · +5%</div>
+        </div>
+        <div class="quick">
+          <div><div class="k">P/E</div><div class="v">7.1×</div></div>
+          <div><div class="k">P/B</div><div class="v">0.9×</div></div>
+          <div><div class="k">Yield</div><div class="v">9.6%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. EXECUTIVE SUMMARY -->
+    <section class="block" id="exec">
+      <span class="section-num">01 · Executive Summary</span>
+      <h2>Pair-trade the cycle: BMRI/BBRI long, BBCA/BBNI hold.</h2>
+      <p class="lead">After the BI Rate's surprise +50bp hike to 5.25% in May, the next 12 months reward banks with structural NIM resilience and clean asset quality. Q1 2026 numbers crystallize a 4-way divergence — and the valuation gap between the highest-ROE name (BBCA, 24%) and the lowest (BBNI, 12%) is not reflected in the P/B spread.</p>
+
+      <div class="card">
+        <h4>Investment thesis (one line each)</h4>
+        <p><span class="bank-tag bbca">BBCA</span><strong>Quality compounder fully priced.</strong> 24.1% ROE and 26.95% CAR are best-in-class — but a 3.0× P/B already pays for them. Holding through cycle, not adding.</p>
+        <p><span class="bank-tag bmri">BMRI</span><strong>Most underpriced top-tier compounder.</strong> +16.6% YoY net profit, 0.98% NPL, and 19% ROE for 7.2× P/E and 1.4× P/B. Pays you a 9.7% dividend to wait. Top pick.</p>
+        <p><span class="bank-tag bbri">BBRI</span><strong>Income with a thesis.</strong> 11.3% yield is real and covered; LAR has fallen from 6.6% to 4.8% YoY — the microfinance recovery is happening. Higher-beta long.</p>
+        <p><span class="bank-tag bbni">BBNI</span><strong>Cheap for reason.</strong> Sub-book P/B 0.88× reflects 12% ROE, 3.5–3.8% NIM compression, and 20% loan growth that may stress credit costs. Hold pending Wondr-driven CASA mix proof.</p>
+      </div>
+
+      <div class="card">
+        <h4>Key catalysts (next 12 months)</h4>
+        <ul>
+          <li><strong>BI rate path</strong> — Market consensus expects 4.75–5.25% range. A reversal to 4.75% in 2H26 would lift Big-4 NIM by ~10–20bp on average.</li>
+          <li><strong>FY25 dividend declarations</strong> — BMRI (Mar 2026 ex-date already past), BBRI distribute on Apr–May 2026 schedule. Sustainability of BBRI's 91% payout is the swing factor.</li>
+          <li><strong>BBNI Wondr KPI disclosure</strong> — Active users + transaction value milestones. If retail CASA mix shifts past 70%, NIM trajectory stabilizes.</li>
+          <li><strong>BMRI deconsolidation effects</strong> — Post-BRIS, NIM guidance cut to 4.5–4.7%. Watch 2Q26 for normalized run-rate.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>Major risks</h4>
+        <ul>
+          <li><strong>Rupiah depreciation forcing further BI hikes</strong> — May 2026 50bp shock signals BI's tolerance for orthodoxy. Another 50–75bp would compress sector NIM 30–50bp.</li>
+          <li><strong>Micro/SME credit stress at BBRI</strong> — Q1 cost-of-credit at upper bound of guidance (3.2% vs 2.9–3.2% FY range). If LAR re-accelerates, BBRI thesis breaks.</li>
+          <li><strong>Digital bank disruption</strong> — Allo, Seabank, Jago continuing to compete on deposit pricing. CASA defense at BBCA/BMRI now structural challenge.</li>
+          <li><strong>Election-cycle fiscal slippage</strong> — Prabowo administration's Rp 4,200T MBG program may pressure rupiah; bond yields up = NIM benefit but mark-to-market loss on AFS portfolios.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 2. INDUSTRY OVERVIEW -->
+    <section class="block" id="industry">
+      <span class="section-num">02 · Indonesia Banking Industry Overview</span>
+      <h2>Solid macro, but the cycle has tightened.</h2>
+      <p class="lead">Indonesia entered 2026 with 5.6% GDP growth and inflation safely inside BI's 2.5%±1% target. Then the rupiah came under pressure from US rate-volatility and BI surprised with a 50bp hike — pivoting from the 2026 easing path it had telegraphed in January. For banks this means NIM headwinds tempered by sustained 9–10% system loan growth.</p>
+
+      <div class="macro">
+        <div class="macro-kpi"><div class="l">BI 7-Day Reverse Repo</div><div class="v">5.25%</div><div class="s">+50bp on 20 May 2026 (BI)</div></div>
+        <div class="macro-kpi"><div class="l">Q1 2026 GDP (y/y)</div><div class="v">5.61%</div><div class="s">Beat 5.30% consensus (BPS, 5 May)</div></div>
+        <div class="macro-kpi"><div class="l">CPI Inflation</div><div class="v">2.42%</div><div class="s">April 2026 within BI target band</div></div>
+        <div class="macro-kpi"><div class="l">System Loan Growth</div><div class="v">~10.0%</div><div class="s">Jan 2026 y/y (BI). BI 2026 target 8–12%</div></div>
+      </div>
+
+      <h3>How the macro reads through to bank P&Ls</h3>
+      <p><strong>Rate path is the swing variable.</strong> The May hike compresses NIM in the short term — banks reprice deposits faster than loans (asset yields are partially fixed-rate corporate exposure). BBNI's published NIM revision (3.8%→3.5–3.8%) is the canary. BBCA's deep CASA franchise (85.2%) gives it the most insulation; BMRI (71.6%) and BBNI (65.6% in 3Q25) are mid-pack.</p>
+      <p><strong>Growth tailwind intact.</strong> Q1 2026 GDP at 5.6% — the strongest print since 2021 — supports the 8–12% credit growth target. BBRI's microfinance and BBNI's corporate loan books both showed >13% YoY growth in Q1. The OJK June 2025 banking statistics report system NPL gross at 2.28% with net NPL 0.86% — credit quality stable but with SME stress noted.</p>
+      <p><strong>Digital threat is structural, not cyclical.</strong> Digital banks (Bank Jago, Seabank, Allo Bank) continue gaining low-cost-funds share. The Big-4's defensive moat is the depth of transaction banking relationships (cash management, payroll, payment rails), not pricing. BCA's 27M customers and 85% CASA show how that moat works in practice.</p>
+    </section>
+
+    <!-- 3. BUSINESS OVERVIEW -->
+    <section class="block" id="business">
+      <span class="section-num">03 · Business Overview per Bank</span>
+      <h2>Four scale advantages, four different business models.</h2>
+      <p class="lead">The Big-4 occupy distinct strategic positions: BBCA is the private-bank deposit franchise, BMRI is the universal-bank market leader, BBRI is the microfinance specialist, BBNI is the corporate/international bank pivoting to consumer digital.</p>
+
+      <div class="card-grid two">
+        <div class="card">
+          <h3 style="margin-top:0;"><span class="bank-tag bbca">BBCA</span>Bank Central Asia</h3>
+          <p><strong>Segments:</strong> Retail banking-dominant; consumer credit, SME, corporate, treasury, with subsidiaries in syariah (BCA Syariah), multifinance (BCA Finance), and insurance.</p>
+          <p><strong>Moat:</strong> Lowest cost-of-funds in Indonesia. 85.2% CASA ratio means roughly 8 of every 10 deposit rupiah pay near-zero interest. Translates to structural NIM advantage even in tight cycles. 27M+ customers, market-leading mobile (myBCA, BCA mobile).</p>
+          <p><strong>Strategic initiatives:</strong> "Mobile-First" digital strategy; ecosystem partnerships; QRIS dominance. The CASA franchise is so deep that BBCA's 1Q26 deposit growth (+8.3% YoY) is funded entirely by low-cost deposits — CASA grew +11.2% YoY.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;"><span class="bank-tag bmri">BMRI</span>Bank Mandiri</h3>
+          <p><strong>Segments:</strong> Indonesia's largest universal bank by assets. Balanced exposure across wholesale (corporate, commercial), retail consumer, SME, syariah (until BRIS deconsolidation Q1 2026), and value chain financing.</p>
+          <p><strong>Moat:</strong> Scale economics + SOE relationships. Government-owned 60%+ — anchors infrastructure project financing and SOE cash management. CASA at 71.6% supports moderate NIM.</p>
+          <p><strong>Strategic initiatives:</strong> Livin' by Mandiri (super-app, 25M+ users); Kopra by Mandiri (wholesale); aggressive corporate loan growth (+13.4% FY25). 1Q26 BRIS deconsolidation reset the equity story — pure-bank franchise now clearer.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;"><span class="bank-tag bbri">BBRI</span>Bank Rakyat Indonesia</h3>
+          <p><strong>Segments:</strong> Microfinance world leader. Ultra Micro Holding (UMi) integrates BRI with PNM and Pegadaian — serves Indonesia's 30M+ micro and ultra-micro borrowers. Also SME, retail, corporate.</p>
+          <p><strong>Moat:</strong> 9,000+ branch network, 90,000+ touchpoints (mantri agents, mobile banking units) — unmatched rural distribution. Translates to highest NIM in the system at 7.9% in 1Q26 vs ~5% peer average.</p>
+          <p><strong>Strategic initiatives:</strong> BRImo digital platform; Senyum Mobile; merchant ecosystem (BRILink). Underwriting discipline tightened post-2024 — LAR down from 6.57% to 4.80% in 1Q26 demonstrates the recovery.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;"><span class="bank-tag bbni">BBNI</span>Bank Negara Indonesia</h3>
+          <p><strong>Segments:</strong> Corporate-heavy SOE bank historically. Now pivoting to retail/digital. Overseas branches in New York, London, Tokyo, Singapore, Hong Kong, Seoul, Amsterdam support trade finance.</p>
+          <p><strong>Moat:</strong> International franchise + SOE corporate banking. Weakest of the four on deposit franchise (CASA ~66% in 3Q25, lowest among peers). Pivot to digital via Wondr is unproven.</p>
+          <p><strong>Strategic initiatives:</strong> Wondr by BNI (consumer super-app launched 2024; 5.4M users by YE25) and BNIdirect (wholesale, 173K users). USD 700M AT1 issuance April 2026 strengthens capital ahead of aggressive 20% YoY loan growth trajectory.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. FINANCIAL PERFORMANCE COMPARISON -->
+    <section class="block" id="financial">
+      <span class="section-num">04 · Financial Performance Comparison</span>
+      <h2>Q1 2026 in one table.</h2>
+      <p class="lead">The headline divergence: BMRI delivered the best growth (+16.6% net profit) on best asset quality (0.98% NPL), while BBNI delivered the weakest growth (+5.2%) on worst NIM compression. BBRI proved its microfinance recovery is real (NIM +20bp YoY).</p>
+
+      <div class="table-wrap"><div class="scroll-x"><table>
+        <thead><tr>
+          <th>Metric (Q1 2026)</th><th>BBCA</th><th>BMRI</th><th>BBRI</th><th>BBNI</th>
+        </tr></thead>
+        <tbody>
+          <tr><td><strong>Net profit (Rp T)</strong></td>
+            <td class="num">14.7</td><td class="num good">15.4</td>
+            <td class="num good">15.6</td><td class="num">5.7</td></tr>
+          <tr><td>Net profit YoY</td>
+            <td class="num">+3.8%</td><td class="num good">+16.6%</td>
+            <td class="num good">+13.8%</td><td class="num">+5.2%</td></tr>
+          <tr><td><strong>NIM</strong></td>
+            <td class="num good">5.4%</td><td class="num">4.7%</td>
+            <td class="num good">7.9%</td><td class="num bad">3.5–3.8%</td></tr>
+          <tr><td>NIM YoY delta</td>
+            <td class="num bad">–40 bp</td><td class="num bad">–20 bp</td>
+            <td class="num good">+20 bp</td><td class="num bad">–30 bp</td></tr>
+          <tr><td><strong>NPL gross</strong></td>
+            <td class="num">1.8%</td><td class="num good">0.98%</td>
+            <td class="num warn">~3.0%</td><td class="num">1.9%</td></tr>
+          <tr><td>NPL coverage</td>
+            <td class="num good">174.6%</td><td class="num">~245%</td>
+            <td class="num">~211%</td><td class="num">~240%</td></tr>
+          <tr><td><strong>CAR (total)</strong></td>
+            <td class="num good">26.95%</td><td class="num">19.7%</td>
+            <td class="num">~25%</td><td class="num">~21% (post-AT1)</td></tr>
+          <tr><td><strong>CASA ratio</strong></td>
+            <td class="num good">85.2%</td><td class="num">71.6%</td>
+            <td class="num">~64%</td><td class="num">65.6%</td></tr>
+          <tr><td>LDR</td>
+            <td class="num">74%</td><td class="num">~96%</td>
+            <td class="num">~88%</td><td class="num">~93%</td></tr>
+          <tr><td><strong>Cost-to-Income (CIR)</strong></td>
+            <td class="num good">27.3%</td><td class="num">~38%</td>
+            <td class="num">41–43%</td><td class="num">~44%</td></tr>
+          <tr><td>Loan growth YoY</td>
+            <td class="num">+5.6%</td><td class="num good">+13.4% (FY25)</td>
+            <td class="num good">+13.7%</td><td class="num good">+20.1%</td></tr>
+          <tr><td>Deposit growth YoY</td>
+            <td class="num">+8.3%</td><td class="num good">+21.0%</td>
+            <td class="num">~+9%</td><td class="num">+26.6% CASA</td></tr>
+          <tr><td>Cost of credit</td>
+            <td class="num">~0.5%</td><td class="num good">~0.7%</td>
+            <td class="num warn">3.2%</td><td class="num">1.1%</td></tr>
+          <tr><td>Loan-at-Risk (LAR)</td>
+            <td class="num">~5%</td><td class="num good">~3%</td>
+            <td class="num good">4.8% (vs 6.6% PY)</td><td class="num warn">8.6%</td></tr>
+        </tbody>
+      </table></div></div>
+      <p class="small">Sources: Bank IR releases for 1Q 2026 (BBCA 23 Apr, BMRI 28 Apr, BBRI 30 Apr, BBNI Apr 2026). Where banks have not disclosed a specific figure, we use 4Q25 or 3Q25 data and annotate. Sell-side reports from Samuel Sekuritas, MNC Securities, KB Valbury, DBS Vickers used as supplementary verification.</p>
+
+      <h3>5-year structural ROE, NIM, NPL</h3>
+      <div class="chart-grid">
+        <div class="chart-card">
+          <h4>ROE (FY2020–FY2024)</h4>
+          <div class="sub">All four banks improved through cycle; BBCA leads</div>
+          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-label="ROE chart">
+            <!-- gridlines -->
+            <g stroke="rgba(127,127,127,0.18)" stroke-width="0.5">
+              <line x1="40" y1="20" x2="310" y2="20"/>
+              <line x1="40" y1="60" x2="310" y2="60"/>
+              <line x1="40" y1="100" x2="310" y2="100"/>
+              <line x1="40" y1="140" x2="310" y2="140"/>
+            </g>
+            <!-- y labels -->
+            <g font-size="9" fill="currentColor" opacity="0.5" text-anchor="end">
+              <text x="36" y="23">25%</text><text x="36" y="63">20%</text>
+              <text x="36" y="103">15%</text><text x="36" y="143">10%</text>
+            </g>
+            <!-- x labels -->
+            <g font-size="9" fill="currentColor" opacity="0.5" text-anchor="middle">
+              <text x="55" y="160">2020</text><text x="115" y="160">2021</text>
+              <text x="175" y="160">2022</text><text x="235" y="160">2023</text><text x="295" y="160">2024</text>
+            </g>
+            <!-- BBCA: 16.6, 18.1, 21.4, 23.6, 24.1 (scale: 10%=140, 25%=20, range = 120/15) -->
+            <polyline fill="none" stroke="#0061a0" stroke-width="2" stroke-linejoin="round"
+              points="55,87 115,75 175,49 235,32 295,28"/>
+            <!-- BMRI: 11.8, 14.7, 22.2, 22.5, 20.7 -->
+            <polyline fill="none" stroke="#d4823e" stroke-width="2" stroke-linejoin="round"
+              points="55,126 115,103 175,42 235,40 295,55"/>
+            <!-- BBRI: 11.8, 15.6, 18.0, 19.3, 18.1 -->
+            <polyline fill="none" stroke="#00529b" stroke-width="2" stroke-linejoin="round"
+              points="55,126 115,96 175,76 235,66 295,76"/>
+            <!-- BBNI: 7.2, 9.9, 14.9, 14.9, 14.0 -->
+            <polyline fill="none" stroke="#f7942e" stroke-width="2" stroke-linejoin="round"
+              points="55,162 115,141 175,101 235,101 295,108"/>
+          </svg>
+          <div class="legend">
+            <span class="bbca">BBCA</span><span class="bmri">BMRI</span>
+            <span class="bbri">BBRI</span><span class="bbni">BBNI</span>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h4>NIM (FY2020–FY2024)</h4>
+          <div class="sub">BBRI's microfinance NIM dwarfs peers</div>
+          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-label="NIM chart">
+            <g stroke="rgba(127,127,127,0.18)" stroke-width="0.5">
+              <line x1="40" y1="20" x2="310" y2="20"/>
+              <line x1="40" y1="60" x2="310" y2="60"/>
+              <line x1="40" y1="100" x2="310" y2="100"/>
+              <line x1="40" y1="140" x2="310" y2="140"/>
+            </g>
+            <g font-size="9" fill="currentColor" opacity="0.5" text-anchor="end">
+              <text x="36" y="23">9%</text><text x="36" y="63">7%</text>
+              <text x="36" y="103">5%</text><text x="36" y="143">3%</text>
+            </g>
+            <g font-size="9" fill="currentColor" opacity="0.5" text-anchor="middle">
+              <text x="55" y="160">2020</text><text x="115" y="160">2021</text>
+              <text x="175" y="160">2022</text><text x="235" y="160">2023</text><text x="295" y="160">2024</text>
+            </g>
+            <!-- BBCA: 5.7, 5.4, 5.8, 5.9, 5.7 (scale: 3%=140, 9%=20, 6%=120/6) -->
+            <polyline fill="none" stroke="#0061a0" stroke-width="2" stroke-linejoin="round"
+              points="55,86 115,92 175,84 235,82 295,86"/>
+            <!-- BMRI: 4.6, 4.8, 5.0, 5.1, 4.9 -->
+            <polyline fill="none" stroke="#d4823e" stroke-width="2" stroke-linejoin="round"
+              points="55,108 115,104 175,100 235,98 295,102"/>
+            <!-- BBRI: 6.3, 7.0, 8.0, 8.0, 7.7 -->
+            <polyline fill="none" stroke="#00529b" stroke-width="2" stroke-linejoin="round"
+              points="55,74 115,60 175,40 235,40 295,46"/>
+            <!-- BBNI: 4.5, 4.7, 4.8, 4.3, 4.1 -->
+            <polyline fill="none" stroke="#f7942e" stroke-width="2" stroke-linejoin="round"
+              points="55,110 115,106 175,104 235,114 295,118"/>
+          </svg>
+          <div class="legend">
+            <span class="bbca">BBCA</span><span class="bmri">BMRI</span>
+            <span class="bbri">BBRI</span><span class="bbni">BBNI</span>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h4>NPL Gross (FY2020–FY2024)</h4>
+          <div class="sub">BMRI's asset quality improvement is striking</div>
+          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-label="NPL chart">
+            <g stroke="rgba(127,127,127,0.18)" stroke-width="0.5">
+              <line x1="40" y1="20" x2="310" y2="20"/>
+              <line x1="40" y1="60" x2="310" y2="60"/>
+              <line x1="40" y1="100" x2="310" y2="100"/>
+              <line x1="40" y1="140" x2="310" y2="140"/>
+            </g>
+            <g font-size="9" fill="currentColor" opacity="0.5" text-anchor="end">
+              <text x="36" y="23">5%</text><text x="36" y="63">4%</text>
+              <text x="36" y="103">3%</text><text x="36" y="143">2%</text>
+            </g>
+            <g font-size="9" fill="currentColor" opacity="0.5" text-anchor="middle">
+              <text x="55" y="160">2020</text><text x="115" y="160">2021</text>
+              <text x="175" y="160">2022</text><text x="235" y="160">2023</text><text x="295" y="160">2024</text>
+            </g>
+            <!-- scale: 1%=180, 5%=20, range = 160/4 (-> per 1% = 40px) -->
+            <!-- BBCA: 1.8, 2.2, 1.8, 2.0, 2.0 -->
+            <polyline fill="none" stroke="#0061a0" stroke-width="2" stroke-linejoin="round"
+              points="55,148 115,132 175,148 235,140 295,140"/>
+            <!-- BMRI: 3.1, 2.5, 1.9, 1.1, 1.1 -->
+            <polyline fill="none" stroke="#d4823e" stroke-width="2" stroke-linejoin="round"
+              points="55,96 115,120 175,144 235,176 295,176"/>
+            <!-- BBRI: 2.9, 3.0, 2.7, 2.9, 2.8 -->
+            <polyline fill="none" stroke="#00529b" stroke-width="2" stroke-linejoin="round"
+              points="55,104 115,100 175,112 235,104 295,108"/>
+            <!-- BBNI: 4.4, 3.3, 2.4, 2.0, 2.0 -->
+            <polyline fill="none" stroke="#f7942e" stroke-width="2" stroke-linejoin="round"
+              points="55,44 115,88 175,124 235,140 295,140"/>
+          </svg>
+          <div class="legend">
+            <span class="bbca">BBCA</span><span class="bmri">BMRI</span>
+            <span class="bbri">BBRI</span><span class="bbni">BBNI</span>
+          </div>
+        </div>
+      </div>
+      <p class="small">5Y ROE/NIM/NPL series compiled from each bank's published annual reports (FY2020–FY2024) cross-verified against sell-side compendiums (Samuel Sekuritas, Bahana, MNC). Visual approximation — refer to dataset (idx_banks_data.json) for exact percentages.</p>
+
+      <h3>Interpretation</h3>
+      <p><strong>ROE.</strong> BBCA is the only bank to never break above 25% but also never below 16% in five years — the textbook compounder. BMRI is the most cyclical, ranging 11.8%→22.5%→20.7%. BBNI never returned to pre-COVID ~15% until 2022 and is now trending back toward 14%. BBRI hovers stably around 18%.</p>
+      <p><strong>NIM.</strong> BBRI's microfinance moat is durable — peaked at 8% in 2022 and held. BBCA's NIM has been remarkably stable at 5.4–5.9%. BBNI's NIM is on a clear downtrend: 4.7%→4.1% over five years. This is the structural problem with the BBNI thesis.</p>
+      <p><strong>NPL.</strong> BMRI's NPL went from 3.1% to 1.1% in five years — best-in-class trajectory. BBNI similarly improved from 4.4% to 2.0%. BBRI's NPL has held steady at ~2.8–3.0% reflecting its higher-risk microfinance book.</p>
+    </section>
+
+    <!-- 5. VALUATION ANALYSIS -->
+    <section class="block" id="valuation">
+      <span class="section-num">05 · Valuation Analysis</span>
+      <h2>The ROE-to-P/B map shows the mispricing.</h2>
+      <p class="lead">In a normal sell-side regression, P/B should rise linearly with sustainable ROE. Plotting current valuations against trailing ROE reveals BBNI as fairly priced for its profitability, BMRI as significantly under-priced, BBRI as fair-to-cheap, and BBCA as priced for perfection.</p>
+
+      <div class="table-wrap"><div class="scroll-x"><table>
+        <thead><tr><th>Bank</th><th>Price (IDR)</th><th>P/E (TTM)</th><th>P/B</th><th>Div Yield</th><th>Payout</th><th>ROE</th><th>"Fair" P/B*</th></tr></thead>
+        <tbody>
+          <tr><td><strong>BBCA</strong></td>
+            <td class="num">6,025</td><td class="num">12.8×</td>
+            <td class="num warn">3.00×</td><td class="num">5.6%</td>
+            <td class="num">65%</td><td class="num good">24.1%</td>
+            <td class="num">~2.8×</td></tr>
+          <tr><td><strong>BMRI</strong></td>
+            <td class="num">4,490</td><td class="num good">7.2×</td>
+            <td class="num">1.37×</td><td class="num good">9.7%</td>
+            <td class="num">77%</td><td class="num">19.1%</td>
+            <td class="num good">~2.0×</td></tr>
+          <tr><td><strong>BBRI</strong></td>
+            <td class="num">3,070</td><td class="num">8.2×</td>
+            <td class="num">1.68×</td><td class="num good">11.3%</td>
+            <td class="num warn">92%</td><td class="num">17.5%</td>
+            <td class="num">~1.7×</td></tr>
+          <tr><td><strong>BBNI</strong></td>
+            <td class="num">3,810</td><td class="num good">7.1×</td>
+            <td class="num good">0.88×</td><td class="num">9.6%</td>
+            <td class="num">69%</td><td class="num bad">12.0%</td>
+            <td class="num">~1.0×</td></tr>
+        </tbody>
+      </table></div></div>
+      <p class="small">*"Fair" P/B is a back-of-envelope reference using P/B ≈ (ROE − g) / (CoE − g) with assumed CoE 13% and terminal growth 8%. Not a target price — illustrative only.</p>
+
+      <h3>Where the premium is justified</h3>
+      <p><strong>BBCA's 3.0× P/B</strong> is high but defensible: 24% ROE with the lowest cost-of-funds franchise in the system, 27% CAR, and beta of just 0.02. Investors are paying for crisis-resistance. The premium narrows only if NIM erodes structurally past 5.0%.</p>
+      <p><strong>BMRI's 1.4× P/B</strong> looks like a clear bargain. At 19% ROE — second-highest in the group — fair P/B by the residual-income model is closer to 2.0×. The discount may reflect post-BRIS deconsolidation noise; we expect it to narrow as 2Q26 clean numbers come in.</p>
+      <p><strong>BBRI's 1.7× P/B</strong> is in line with its 17.5% ROE. Yield is the kicker — 11.3% covered by stable cash flows is meaningfully above Indonesia's 10-year government bond yield of ~7%. Investors get equity exposure at bond-like income.</p>
+      <p><strong>BBNI's 0.88× P/B</strong> is a value-trap signal. At 12% ROE and declining NIM trajectory, fair P/B is ~1.0× — i.e., the stock is roughly fair, not cheap. The "discount to book" framing only works if you believe ROE will recover toward 15%+, which requires the Wondr/digital pivot to work.</p>
+    </section>
+
+    <!-- 6. COMPETITIVE POSITIONING -->
+    <section class="block" id="position">
+      <span class="section-num">06 · Competitive Positioning</span>
+      <h2>Each bank wins on a different axis.</h2>
+      <p class="lead">No single bank dominates every category. The investment question is which axis you weight: balance-sheet defense (BBCA), value-quality (BMRI), yield/income (BBRI), or option value on digital pivot (BBNI).</p>
+
+      <div class="matrix">
+        <div class="matrix-h">Axis</div>
+        <div class="matrix-h">Winner</div>
+        <div class="matrix-h">Why</div>
+        <div class="matrix-h">Runner-up</div>
+        <div class="matrix-h">Watchpoint</div>
+
+        <div class="matrix-c"><div class="w">Moat</div>Franchise quality</div>
+        <div class="matrix-c"><span class="bank-tag bbca">BBCA</span></div>
+        <div class="matrix-c">85% CASA — lowest cost-of-funds in Indonesia. Funded with near-free deposits.</div>
+        <div class="matrix-c"><span class="bank-tag bbri">BBRI</span> microfinance scale</div>
+        <div class="matrix-c">Digital banks chipping at CASA share at the margin.</div>
+
+        <div class="matrix-c"><div class="w">Profitability</div>ROE quality</div>
+        <div class="matrix-c"><span class="bank-tag bbca">BBCA</span></div>
+        <div class="matrix-c">24% ROE, lowest volatility (range 16–24% over 5Y).</div>
+        <div class="matrix-c"><span class="bank-tag bmri">BMRI</span> at 19%</div>
+        <div class="matrix-c">NIM compression −40bp YoY in 1Q26 starting to bite.</div>
+
+        <div class="matrix-c"><div class="w">Risk mgmt</div>Asset quality</div>
+        <div class="matrix-c"><span class="bank-tag bmri">BMRI</span></div>
+        <div class="matrix-c">NPL gross 0.98% (lowest), down from 3.1% in 2020. Coverage 245%.</div>
+        <div class="matrix-c"><span class="bank-tag bbca">BBCA</span> at 1.8% NPL</div>
+        <div class="matrix-c">BBNI LAR at 8.6% with 20% loan growth — credit-cost risk.</div>
+
+        <div class="matrix-c"><div class="w">Digital</div>Tech strategy</div>
+        <div class="matrix-c"><span class="bank-tag bbca">BBCA</span></div>
+        <div class="matrix-c">myBCA + BCA mobile + QRIS dominance. Lowest digital banking friction.</div>
+        <div class="matrix-c"><span class="bank-tag bmri">BMRI</span> Livin' + Kopra</div>
+        <div class="matrix-c">BBNI's Wondr (5.4M users) is gaining but unproven monetization.</div>
+
+        <div class="matrix-c"><div class="w">Growth</div>Loan book growth</div>
+        <div class="matrix-c"><span class="bank-tag bbni">BBNI</span></div>
+        <div class="matrix-c">+20.1% YoY loan growth, well above system 10%. Highest beta to credit cycle.</div>
+        <div class="matrix-c"><span class="bank-tag bbri">BBRI</span> at 13.7%</div>
+        <div class="matrix-c">BBNI growth needs to translate into NIM expansion, not just balance sheet inflation.</div>
+      </div>
+    </section>
+
+    <!-- 7. KEY RISKS -->
+    <section class="block" id="risks">
+      <span class="section-num">07 · Key Risks</span>
+      <h2>Five risk vectors to monitor.</h2>
+
+      <div class="risk-grid">
+        <div class="risk">
+          <div class="head"><span class="lvl m">Medium</span><h4 style="margin:0;">Macroeconomic / FX</h4></div>
+          <p>Rupiah pressure forced BI's +50bp May hike. Further hikes would compress NIM 30–50bp across sector. Mitigant: BBCA's CASA insulates it; BBRI's microfinance NIM is structurally above policy rate.</p>
+        </div>
+        <div class="risk">
+          <div class="head"><span class="lvl h">High</span><h4 style="margin:0;">Interest rate</h4></div>
+          <p>Asymmetric: banks reprice deposits faster than loans on the way up; reverse on the way down. BBNI's 50bp credit-yield decline in Q1 is the visible damage. Highest exposure: BBNI > BMRI > BBRI > BBCA.</p>
+        </div>
+        <div class="risk">
+          <div class="head"><span class="lvl m">Medium</span><h4 style="margin:0;">Credit quality</h4></div>
+          <p>BBRI cost-of-credit at 3.2% (upper bound of FY guidance). BBNI LAR 8.6% with rapid 20% loan growth — vintage risk. BMRI/BBCA NPLs are at historical lows, providing cushion.</p>
+        </div>
+        <div class="risk">
+          <div class="head"><span class="lvl m">Medium</span><h4 style="margin:0;">Digital disruption</h4></div>
+          <p>Bank Jago, Seabank, Allo Bank competing for low-cost deposits. CASA mix erosion of 200–300bp over 3 years possible if competition intensifies. Largest threat to BBNI's already-weak CASA franchise.</p>
+        </div>
+        <div class="risk">
+          <div class="head"><span class="lvl m">Medium</span><h4 style="margin:0;">Regulatory</h4></div>
+          <p>OJK Buy-Now-Pay-Later regulation (effective 2026); potential SOE dividend payout floors; M&A constraints; possible BPJS subsidy revision affecting consumer borrowing power. SOE banks (BMRI, BBRI, BBNI) most exposed.</p>
+        </div>
+        <div class="risk">
+          <div class="head"><span class="lvl l">Low–Med</span><h4 style="margin:0;">Capital adequacy</h4></div>
+          <p>All four banks well-capitalized. BBCA's 27% CAR provides extreme buffer; BBNI just issued USD 700M AT1 (April 2026) to support 20% loan growth. No bank near regulatory floor (8% Tier-1 + buffers).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. FINAL RECOMMENDATION -->
+    <section class="block" id="reco">
+      <span class="section-num">08 · Final Recommendation</span>
+      <h2>Four picks for four mandates.</h2>
+
+      <div class="reco">
+        <div class="reco-card">
+          <div class="cat">Best Overall Pick</div>
+          <div class="pick"><span class="bank-tag bmri">BMRI</span>Bank Mandiri</div>
+          <span class="badge buy" style="margin-top:10px;display:inline-block;">BUY · TP 5,600</span>
+          <p class="why">19% ROE for 1.37× P/B is the cleanest value-quality combination in Indonesia. +16.6% Q1 net profit growth, 0.98% NPL, 9.7% dividend yield. Post-BRIS noise should clear by 2Q26 — entry point.</p>
+        </div>
+
+        <div class="reco-card">
+          <div class="cat">Strongest Defensive</div>
+          <div class="pick"><span class="bank-tag bbca">BBCA</span>Bank Central Asia</div>
+          <span class="badge hold" style="margin-top:10px;display:inline-block;">HOLD · TP 6,500</span>
+          <p class="why">Fortress balance sheet (27% CAR), highest ROE (24%), lowest beta (0.02). The bank you buy if you're concerned about Indonesian macro tail risk. Already priced for quality — limited upside but compounds quietly.</p>
+        </div>
+
+        <div class="reco-card">
+          <div class="cat">Strongest Growth</div>
+          <div class="pick"><span class="bank-tag bbri">BBRI</span>Bank Rakyat Indonesia</div>
+          <span class="badge buy" style="margin-top:10px;display:inline-block;">BUY · TP 3,800</span>
+          <p class="why">Microfinance NIM at 7.9% is the system's highest. LAR recovery from 6.6% to 4.8% shows underwriting discipline working. 11.3% dividend yield while the recovery plays out.</p>
+        </div>
+
+        <div class="reco-card">
+          <div class="cat">Most Undervalued (on book)</div>
+          <div class="pick"><span class="bank-tag bbni">BBNI</span>Bank Negara Indonesia</div>
+          <span class="badge hold" style="margin-top:10px;display:inline-block;">HOLD · TP 4,000</span>
+          <p class="why">P/B 0.88× appears cheap but the 12% ROE justifies most of the discount. Buy only if you believe Wondr/digital pivot will lift ROE back to 15%+. We need 2–3 quarters of CASA mix improvement before upgrading.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 24px;">
+        <h4>Portfolio construction view</h4>
+        <p><strong>For income-driven mandates:</strong> 50% BMRI + 30% BBRI + 20% BBCA. Blended yield ~8.5%, blended ROE ~20%, balanced across SOE/private exposure.</p>
+        <p><strong>For quality-driven mandates:</strong> 50% BBCA + 30% BMRI + 20% BBRI. Blended ROE ~22%, lowest aggregate beta. Sacrifices yield for stability.</p>
+        <p><strong>For value-tilted mandates:</strong> 40% BMRI + 30% BBRI + 30% BBNI. Blended P/B ~1.3×, blended yield ~10%. Highest beta to a cycle recovery / rate-cut scenario.</p>
+        <p><strong>Skip BBNI in defensive positioning</strong> until the digital franchise proves it can structurally shift CASA mix above 70%.</p>
+      </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="block">
+      <span class="section-num">09 · Sources</span>
+      <h2>Where every number came from.</h2>
+
+      <div class="sources">
+        <h4 style="margin-top:0;">Primary disclosures (1Q 2026 results)</h4>
+        <ul>
+          <li><a href="https://www.bca.co.id/-/media/Feature/Report/File/Berita-Investor/2026/20260423-1q26-presentasi-perusahaan.pdf">BBCA 1Q26 Corporate Presentation — 23 April 2026</a></li>
+          <li><a href="https://www.bankmandiri.co.id/documents/38265486/0/1Q26+Analyst+Meeting+-+Long+Form+(7).pdf">BMRI 1Q26 Analyst Meeting Long Form — 28 April 2026</a></li>
+          <li><a href="https://www.idnfinancials.com/news/63207/mandiri-profit-rises-16-6-in-q1-after-bris-deconsolidation">IDNFinancials: BMRI profit rises 16.6% in Q1 after BRIS deconsolidation</a></li>
+          <li><a href="https://www.indopremier.com/module/newsDetail.php?jdl=BBRI___1Q26_results__in_line__decent_PPOP_was_complemented_by_improvement_in_CoC&news_id=217236&group_news=IPOTNEWS">Indo Premier: BBRI 1Q26 results note (30 April 2026)</a></li>
+          <li><a href="https://www.bni.co.id/Portals/1/BNI/Perusahaan/HubunganInvestor/Docs/2026/Corporate-Presentation-BNI-1Q26.pdf">BBNI 1Q26 Corporate Presentation</a></li>
+          <li><a href="https://databoks.katadata.co.id/en/finance/statistics/69fb41c48d8d3/bnis-profit-reaches-rp566-trillion-in-q1-2026-up-52">Databoks: BNI profit reaches Rp 5.66T in Q1 2026, up 5.2%</a></li>
+        </ul>
+
+        <h4>Official statistics</h4>
+        <ul>
+          <li><a href="https://www.bi.go.id/id/publikasi/ruang-media/news-release/Pages/sp_284326.aspx">Bank Indonesia — BI Rate 4.75% (Apr 2026 release)</a></li>
+          <li><a href="https://www.bi.go.id/en/iru/highlight-news/Pages/-CPI-Inflation-in-April-2026-Remains-Under-Control.aspx">Bank Indonesia — April 2026 CPI under control</a></li>
+          <li><a href="https://www.bps.go.id/en/pressrelease/2026/05/05/2575/ekonomi-indonesia-triwulan-i-2026-tumbuh-5-61-persen--y-on-y-.html">BPS — Indonesia Q1 2026 GDP grew 5.61% YoY</a></li>
+          <li><a href="https://ojk.go.id/en/kanal/perbankan/data-dan-statistik/statistik-perbankan-indonesia/default.aspx">OJK — Indonesia Banking Statistics</a></li>
+          <li><a href="https://ojk.go.id/id/kanal/perbankan/data-dan-statistik/statistik-perbankan-indonesia/Documents/Pages/Statistik-Perbankan-Indonesia---Juni-2025/STATISTIK%20PERBANKAN%20INDONESIA%20-Juni%202025.pdf">OJK SPI June 2025 (system NPL gross 2.28%)</a></li>
+        </ul>
+
+        <h4>Investor relations & annual report archives</h4>
+        <ul>
+          <li><a href="https://www.bni.co.id/en-us/investors/financial-reports">BNI Investor Relations — Financial Reports archive</a></li>
+          <li><a href="https://www.bankmandiri.co.id/en/web/ir">Bank Mandiri Investor Relations</a></li>
+          <li><a href="https://www.bni.co.id/Portals/1/BNI/Perusahaan/HubunganInvestor/Docs/2025/Corporate-Presentation-BNI-FY25.pdf">BNI FY25 Corporate Presentation</a></li>
+        </ul>
+
+        <h4>Sell-side cross-verification</h4>
+        <ul>
+          <li>Samuel Sekuritas (BBCA 1Q26, BMRI 1Q26, BBNI 9M25 reports)</li>
+          <li>MNC Sekuritas (BBCA 1Q26 equity report, 27 April 2026)</li>
+          <li>KB Valbury (BBCA 7M25, BBCA 9M25, BBNI 9M25 reports)</li>
+          <li>Indo Premier (BBCA 1Q26, BBRI 1Q26 commentary)</li>
+          <li>DBS Vickers (BBNI NIM pressure note, July 2025)</li>
+          <li>stockanalysis.com per-ticker statistics pages (BBCA, BMRI, BBRI, BBNI)</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div><strong>Disclaimer.</strong> This report is for educational and research purposes only. Not a solicitation. All ratings and price targets reflect the author's analysis at time of publication (26 May 2026). Where bank-specific disclosures conflict with secondary sources, primary IR releases are used. Where individual figures were unavailable directly, sell-side notes from the firms named above are used and noted in source.</div>
+      <div style="margin-top:8px;">Built as a Cowork artifact · Self-contained HTML · Apple-style design system</div>
+    </footer>
+  </main>
+
+<script>
+  // Theme toggle
+  const themeBtn = document.getElementById("themeBtn");
+  function applyTheme(t) {
+    document.body.setAttribute("data-theme", t);
+    themeBtn.textContent = t === "dark" ? "Light" : "Dark";
+    try { localStorage.setItem("idx-banks-theme", t); } catch(e){}
+  }
+  themeBtn.addEventListener("click", () => {
+    applyTheme(document.body.getAttribute("data-theme") === "dark" ? "light" : "dark");
+  });
+  try {
+    const saved = localStorage.getItem("idx-banks-theme");
+    if (saved) applyTheme(saved);
+    else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) applyTheme("dark");
+  } catch(e){}
+</script>
+</body>
+</html>
