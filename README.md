@@ -61,5 +61,5 @@ Final recommendation based on risk-adjusted return and long-term outlook.
 ## Author
 
 Miftakhul Rifki Al Fahmi  
-Development Economics Student  
+Development Economics Graduate Student  
 Interested in Financial Markets, Investment Research, and Digital Assets
